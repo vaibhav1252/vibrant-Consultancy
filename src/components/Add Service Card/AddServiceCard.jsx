@@ -2,6 +2,65 @@ import React from 'react'
 import { Container, Form, Row, Col, Button, Dropdown, Table } from 'react-bootstrap'
 
 function AddServiceCard() {
+
+    const isAlpha = (e) => {
+        let element = e.target;
+        let status, emptyMessage = false;
+
+        if (element.value.length == 0) {
+            emptyMessage = true;
+            status = true;
+        } else if (e.target.value.match(/^[a-zA-Z]*$/)) {
+            status = false;
+        }
+        else {   // console.log(element);
+            // console.log(element.getAttribute("message"));
+            status = true;
+        }
+
+        if (!status) {
+            element.nextSibling.classList.remove('d-block');
+            element.nextSibling.classList.add('d-none');
+            element.classList.add('is-valid');
+            element.classList.remove('is-invalid');
+        }
+        else {
+            element.classList.add('is-invalid');
+            element.classList.remove('is-valid');
+            element.nextSibling.classList.add('d-block');
+            element.nextSibling.classList.remove('d-none');
+            emptyMessage ? element.nextSibling.innerHTML = "this field should not be Empty" : element.nextSibling.innerHTML = element.getAttribute("message");
+        }
+    }
+
+    const isNum = (e) => {
+        let element = e.target;
+        let status, emptyMessage = false;
+
+        if (element.value.length == 0) {
+            emptyMessage = true;
+            status = true;
+        } else if (e.target.value.match(/^[0-9]+$/)) {
+            status = false;
+        }
+        else {
+            status = true;
+        }
+        if (!status) {
+            element.nextSibling.classList.remove('d-block');
+            element.nextSibling.classList.add('d-none');
+            element.classList.add('is-valid');
+            element.classList.remove('is-invalid');
+        }
+        else {
+            element.classList.add('is-invalid');
+            element.classList.remove('is-valid');
+            element.nextSibling.classList.add('d-block');
+            element.nextSibling.classList.remove('d-none');
+            emptyMessage ? element.nextSibling.innerHTML = "this field should not be Empty" : element.nextSibling.innerHTML = element.getAttribute("message");
+        }
+    }
+
     return (
         <>
             <Container>
@@ -11,7 +70,7 @@ function AddServiceCard() {
                         <Col className='col-md-3'>
                             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
                                 <Form.Label>Faculty Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Faculty Name" />
+                                <Form.Control type="text" placeholder="Enter Faculty Name" name="FacultyName" message="please Enter valid Faculty Name" onChange={isAlpha} onBlur={isAlpha} />
                                 <div className='invalid-feedback d-none'>
                                 </div>
                             </Form.Group>
@@ -19,7 +78,7 @@ function AddServiceCard() {
                         <Col className='col-md-3'>
                             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
                                 <Form.Label>Contact No.</Form.Label>
-                                <Form.Control required type="text" placeholder="Contact No." />
+                                <Form.Control required type="text" placeholder="Contact No." name="Contact No." message="please Enter valid Contact No." onChange={isNum} onBlur={isNum}/>
                                 <div className='invalid-feedback d-none'>
                                 </div>
                             </Form.Group>
@@ -37,7 +96,7 @@ function AddServiceCard() {
                         <Col className='col-md-3'>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Aadhar No.</Form.Label>
-                                <Form.Control required type="text" placeholder="Aadhar No." />
+                                <Form.Control required type="text" placeholder="Aadhar No." name="Aadhar No." message="please Enter valid Aadhar No." onChange={isNum} onBlur={isNum}/>
                                 <div className='invalid-feedback d-none'>
                                 </div>
                             </Form.Group>
@@ -45,7 +104,7 @@ function AddServiceCard() {
                         <Col className='col-md-3'>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>user Name</Form.Label>
-                                <Form.Control required type="text" placeholder="user Name" />
+                                <Form.Control required type="text" placeholder="user Name" name="User Name" message="please Enter valid User Name" onChange={isAlpha} onBlur={isAlpha} />
                                 <div className='invalid-feedback d-none'>
                                 </div>
                             </Form.Group>

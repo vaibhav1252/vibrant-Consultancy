@@ -5,7 +5,7 @@ function ViewDistrictList() {
     return (
         <>
             <Container>
-                <Form className='text-dark shadow bg-white p-2 mb-4  mt-4 needs-validation'>
+                <Form className='text-dark shadow\ bg-white p-2 mb-4  mt-4 needs-validation'>
                     <h5><b>View District List</b></h5>
                     <Row>
                         <Col className='col-md-12'>
@@ -65,7 +65,7 @@ function ViewDistrictList() {
                         </Col>
                     </Row>
                 </Form>
-            </Container >
+            </Container>
         </>
     )
 }

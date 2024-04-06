@@ -17,9 +17,7 @@ function App() {
       {/* <Login /> */}
       {/* <Registration /> */}
       {/* <PrivacyPolicy /> */}
-      {/* <AddServiceCard /> */}
-      {/* <AddCourseCard />
-      <ViewDistrictList /> */}
+      <AddServiceCard />
       <Courses />
 
     </>
